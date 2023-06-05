@@ -1,0 +1,1 @@
+We are now starting high-level programming. Python, a versatile high-level programming language, will be our primary tool for this purpose. Throughout our work, we will primarily focus on Python and utilize its extensive capabilities.
