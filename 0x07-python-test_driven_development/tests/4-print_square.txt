@@ -1,4 +1,4 @@
-
+The ``4-print_square`` module
 ======================
 
 Using ``print_square``
@@ -78,4 +78,10 @@ Checking for non-number types:
 
 Checking for non-int number types:
 	 >>> print_square(1.0)
+	 Traceback (most recent call last):
+         ...
+         TypeError: size must be an integer
+	 >>> print_square(-5.5)
+	 Traceback (most recent call last):
+         ...
          TypeError: size must be an integer
