@@ -4,25 +4,28 @@
 
 
 def find_peak(list_of_integers):
-    if not list_of_integers:
+    """
+    Args:
+        list_of_integers(int): list of integers to find peak of
+    Returns: peak of list_of_integers or None
+    """
+    size = len(list_of_integers)
+    mid_e = size
+    mid = size // 2
+
+    if size == 0:
         return None
 
-    low = 0
-    high = len(list_of_integers) - 1
-
-    while low < high:
-        mid = low + (high - low) // 2
-
-        # Check if mid is greater than its neighbors
-        if (mid == 0 or list_of_integers[mid - 1] <= list_of_integers[mid]) and \
-           (mid == len(list_of_integers) - 1 or list_of_integers[mid + 1] <= list_of_integers[mid]):
-            return list_of_integers[mid]
-
-        # If the middle element is less than its left neighbor, then peak lies in left half
-        if mid > 0 and list_of_integers[mid - 1] > list_of_integers[mid]:
-            high = mid
+    while True:
+        mid_e = mid_e // 2
+        if (mid < size - 1 and
+                list_of_integers[mid] < list_of_integers[mid + 1]):
+            if mid_e // 2 == 0:
+                mid_e = 2
+            mid = mid + mid_e // 2
+        elif mid_e > 0 and list_of_integers[mid] < list_of_integers[mid - 1]:
+            if mid_e // 2 == 0:
+                mid_e = 2
+            mid = mid - mid_e // 2
         else:
-            # If the middle element is less than its right neighbor, then peak lies in right half
-            low = mid + 1
-
-    return list_of_integers[low]
+            return list_of_integers[mid]
