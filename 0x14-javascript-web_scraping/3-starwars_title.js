@@ -1,10 +1,14 @@
 #!/usr/bin/node
-// This script prints the title of a Star Wars movie where
-// the episode number matches a given integer.
-const axios = require('axios');
-const ID = process.argv[2];
 
-axios.get(`https://swapi-api.hbtn.io/api/films/${ID}`)
-  .then(res => {
-    console.log(res.data.title);
-  });
+const request = require('request');
+
+let requestUrl = 'https://swapi-api.alx-tools.com/api/films/';
+requestUrl += process.argv[2];
+
+request(requestUrl, (err, response, body) => {
+  if (err) {
+    throw (err);
+  }
+  const film = JSON.parse(body);
+  console.log(film.title);
+});
